@@ -1,17 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using MyTwitter.Data;
 
 namespace MyTwitter.App.Controllers
 {
-    public class BaseController : Controller
+    using System.Web.Mvc;
+    using MyTwitter.Data.UnitOfWork;
+    using MyTwitter.Model;
+
+    public abstract class BaseController : Controller
     {
-        // GET: Base
-        public ActionResult Index()
+        private IMyTwitterData data;
+        protected BaseController(IMyTwitterData data)
         {
-            return View();
+            this.Data = data;
         }
+
+        protected BaseController()
+            : this(new MyTwitterData(new ApplicationDbContext()))
+        {
+        }
+
+        protected IMyTwitterData Data { get; private set; }
     }
 }

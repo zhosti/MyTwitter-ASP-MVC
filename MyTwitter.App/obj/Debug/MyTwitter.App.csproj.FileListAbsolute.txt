@@ -57,3 +57,8 @@ c:\users\ivan\documents\visual studio 2013\Projects\MyTwitter\MyTwitter.App\bin\
 c:\users\ivan\documents\visual studio 2013\Projects\MyTwitter\MyTwitter.App\bin\System.Web.Optimization.xml
 c:\users\ivan\documents\visual studio 2013\Projects\MyTwitter\MyTwitter.App\obj\Debug\MyTwitter.App.dll
 c:\users\ivan\documents\visual studio 2013\Projects\MyTwitter\MyTwitter.App\obj\Debug\MyTwitter.App.pdb
+c:\users\ivan\documents\visual studio 2013\Projects\MyTwitter\MyTwitter.App\bin\Glimpse.Ado.dll
+c:\users\ivan\documents\visual studio 2013\Projects\MyTwitter\MyTwitter.App\bin\Glimpse.AspNet.dll
+c:\users\ivan\documents\visual studio 2013\Projects\MyTwitter\MyTwitter.App\bin\Glimpse.Core.dll
+c:\users\ivan\documents\visual studio 2013\Projects\MyTwitter\MyTwitter.App\bin\Glimpse.EF6.dll
+c:\users\ivan\documents\visual studio 2013\Projects\MyTwitter\MyTwitter.App\bin\Glimpse.Mvc5.dll

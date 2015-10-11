@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace MyTwitter.App.Controllers
+﻿namespace MyTwitter.App.Controllers
 {
+    using System.Web.Mvc;
     public class HomeController : Controller
     {
         public ActionResult Index()
