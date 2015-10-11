@@ -11,7 +11,7 @@ namespace MyTwitter.Data
     public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("MyTwitterDB", throwIfV1Schema: false)
         {
         }
 

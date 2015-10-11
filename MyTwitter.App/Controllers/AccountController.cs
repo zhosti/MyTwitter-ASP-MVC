@@ -18,21 +18,21 @@ namespace MyTwitter.App.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private UserManager _userManager;
+        private AppUserManager _userManager;
 
         public AccountController()
         {
         }
 
-        public AccountController(UserManager userManager)
+        public AccountController(AppUserManager userManager)
         {
             UserManager = userManager;
         }
 
-        public UserManager UserManager {
+        public AppUserManager UserManager {
             get
             {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<UserManager>();
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<AppUserManager>();
             }
             private set
             {
@@ -92,7 +92,7 @@ namespace MyTwitter.App.Controllers
             if (ModelState.IsValid)
             {
                 var user = new User() { UserName = model.Email, Email = model.Email };
-                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
+                var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInAsync(user, isPersistent: false);
