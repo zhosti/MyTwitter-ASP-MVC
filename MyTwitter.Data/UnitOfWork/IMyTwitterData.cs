@@ -8,6 +8,7 @@ namespace MyTwitter.Data.UnitOfWork
     {
         IRepository<User> Users { get; }
 
+        IRepository<Tweet> Tweets { get; }
         int Save();
     }
 }

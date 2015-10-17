@@ -10,6 +10,8 @@
 
         T Find(object id);
 
+        T GetById(object id);
+
         T Add(T entity);
 
         T Update(T entity);

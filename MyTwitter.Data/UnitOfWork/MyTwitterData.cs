@@ -21,6 +21,10 @@ namespace MyTwitter.Data.UnitOfWork
             get { return this.GetRepository<User>(); }
         }
 
+        public IRepository<Tweet> Tweets
+        {
+            get { return this.GetRepository<Tweet>(); }
+        }
         private IRepository<T> GetRepository<T>() where T : class
         {
             if (!this.repositories.ContainsKey(typeof(T)))

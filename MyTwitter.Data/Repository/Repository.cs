@@ -20,6 +20,11 @@
             return this.DbSet.AsQueryable();
         }
 
+        public T GetById(object id)
+        {
+            return this.DbSet.Find(id);
+        }
+
         public T Find(object id)
         {
             return this.DbSet.Find(id);

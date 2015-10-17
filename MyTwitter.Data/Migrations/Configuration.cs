@@ -1,3 +1,7 @@
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using MyTwitter.Model;
+
 namespace MyTwitter.Data.Migrations
 {
     using System;
@@ -5,7 +9,7 @@ namespace MyTwitter.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public Configuration()
         {
@@ -14,18 +18,27 @@ namespace MyTwitter.Data.Migrations
 
         protected override void Seed(MyTwitter.Data.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            if (!context.Roles.Any(r => r.Name == "Administrator"))
+            {
+                var roleStore = new RoleStore<IdentityRole>(context);
+                var roleManager = new RoleManager<IdentityRole>(roleStore);
+                var role = new IdentityRole { Name = "Administrator" };
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+                roleManager.Create(role);
+            }
+
+            // if user doesn't exist, create one and add it to the admin role
+            if (!context.Users.Any(u => u.UserName == "admin@admin.com"))
+            {
+                var userStore = new UserStore<User>(context);
+                var userManager = new UserManager<User>(userStore);
+                var user = new User { UserName = "admin@admin.com", Email = "admin@admin.com" };
+
+                userManager.Create(user, "password");
+                userManager.AddToRole(user.Id, "Administrator");
+            }
+
+            base.Seed(context);
         }
     }
 }
